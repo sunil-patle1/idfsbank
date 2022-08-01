@@ -7,7 +7,8 @@ pipeline {
     stages {
         stage('Pull') { 
             steps {
-                git credentialsId: 'idfsbank_github', url: 'git@github.com:atulyw/idfsbank.git' 
+                sh 'ls'    
+                git 'git@github.com:atulyw/idfsbank.git' 
             }
         }
         stage('QA') { 
