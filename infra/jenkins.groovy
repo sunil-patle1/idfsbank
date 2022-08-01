@@ -8,7 +8,7 @@ pipeline {
         stage('Pull') { 
             steps {
                 sh 'ls'    
-                git 'git@github.com:atulyw/idfsbank.git' 
+                git 'https://github.com/atulyw/idfsbank.git' 
             }
         }
         stage('QA') { 
