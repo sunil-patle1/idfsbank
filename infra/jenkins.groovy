@@ -20,12 +20,66 @@ pipeline {
                ''' 
             }
         }
-        stage('Push-Build') { 
+        stage('push-dev') {
+         when {
+            branch 'develop'
+         }    
             steps {
                 echo 'pushing artifact to s3'
             }
         }
-        stage('Deploy') { 
+        stage('deploy-dev') { 
+         when {
+            branch 'develop'
+         }  
+            steps {
+                echo 'Deploying artifact to s3'
+            }
+        }
+        stage('push-test') {
+         when {
+            branch 'release/*'
+         }   
+            steps {
+                echo 'pushing artifact to s3'
+            }
+        }
+        stage('deploy-test') {
+         when {
+            branch 'release/*'
+         }             
+            steps {
+                echo 'Deploying artifact to s3'
+            }
+        }
+        stage('push-uat') { 
+         when {
+            branch 'release/*'
+         }            
+            steps {
+                echo 'pushing artifact to s3'
+            }
+        }
+        stage('deploy-uat') {
+         when {
+            branch 'release/*'
+         }             
+            steps {
+                echo 'Deploying artifact to s3'
+            }
+        }
+        stage('push-prod') {
+         when {
+            branch 'main'
+         }             
+            steps {
+                echo 'pushing artifact to s3'
+            }
+        }
+        stage('deploy-prod') {
+         when {
+            branch 'main'
+         }            
             steps {
                 echo 'Deploying artifact to s3'
             }
