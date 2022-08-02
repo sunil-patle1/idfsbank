@@ -1,14 +1,12 @@
 pipeline {
     agent any
     stages {
-        // stage('Pull') { 
-        //     // steps {
-        //     //     git credentialsId: 'github', url: 'git@github.com:atulyw/idfsbank.git'
-        //     // }
-        // }
         stage('QA') { 
             steps {
-                echo "$BUILD_NUMBER Pass for QA"
+                echo "$BUILD_NUMBER QA for CODE_COVERAGR"
+            }
+            steps {
+                echo "$BUILD_NUMBER QA for BUG_ISSUE"
             }
         }
         stage('Build') { 
