@@ -2,9 +2,20 @@ pipeline {
     agent any
     stages {
         stage('QA') { 
-            steps {
-                echo "$BUILD_NUMBER QA for CODE_COVERAGE"
+            parallel{
+            stage("QA-1"){
+              agent any
+              steps{
+                echo "QA 1 PASSED"
+                }
+              }
+            stage("QA-2") {
+              agent any
+              steps{
+                echo "QA 2 PASSED"
             }
+            }
+        }
         }
         stage('Build') { 
             steps {
