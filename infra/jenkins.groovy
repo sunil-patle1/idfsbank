@@ -3,10 +3,7 @@ pipeline {
     stages {
         stage('QA') { 
             steps {
-                echo "$BUILD_NUMBER QA for CODE_COVERAGR"
-            }
-            steps {
-                echo "$BUILD_NUMBER QA for BUG_ISSUE"
+                echo "$BUILD_NUMBER QA for CODE_COVERAGE"
             }
         }
         stage('Build') { 
