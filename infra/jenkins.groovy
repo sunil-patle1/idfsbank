@@ -6,7 +6,9 @@ pipeline {
                 stage("QA-1"){
                     agent any
                     steps {
-                        echo "QA 1 PASSED"
+                    withSonarQubeEnv(credentialsId: 'sonar_idfs') {
+                       sonar-scanner -Dsonar.projectKey=idfsbank
+                    }
                     }
                 }
 
