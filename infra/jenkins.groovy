@@ -20,7 +20,7 @@ pipeline {
         }
         stage("Sonar-Scan") {
             steps { 
-            withSonarQubeEnv(credentialsId: 'sonar_idfs') 
+            withSonarQubeEnv(installationName: 'sonar-idfs', credentialsId: 'sonar_idfs') 
             {
                 sh 'sonar-scanner -Dsonar.projectKey=idfsbank'
             }
