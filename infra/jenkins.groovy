@@ -22,10 +22,16 @@ pipeline {
             steps { 
             //withSonarQubeEnv(installationName: 'sonar-idfs', credentialsId: 'sonar_idfs') 
             //{ 
-                sh 'echo $PATH'
-                sh 'export PATH=$PATH:/usr/sbin/sonar-scanner/bin'
-                sh 'echo $PATH'
-                sh 'sonar-scanner -Dsonar.login=b2245e51979648e62f91cf0e28cd73ad8d4dedb0 -Dsonar.projectKey=idfsbank -Dsonar.organization=atulyw'
+                // sh 'echo $PATH'
+                // sh 'export PATH=$PATH:/usr/sbin/sonar-scanner/bin'
+                // sh 'echo $PATH'
+                // sh 'sonar-scanner -Dsonar.login=b2245e51979648e62f91cf0e28cd73ad8d4dedb0 -Dsonar.projectKey=idfsbank -Dsonar.organization=atulyw'
+                sh '''
+                export PATH=$PATH:/usr/sbin/sonar-scanner/bin
+                echo $PATH
+                sonar-scanner -Dsonar.login=b2245e51979648e62f91cf0e28cd73ad8d4dedb0 -Dsonar.projectKey=idfsbank -Dsonar.organization=atulyw
+                '''
+
             //}
           }  
         }
