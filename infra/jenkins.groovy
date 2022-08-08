@@ -7,7 +7,7 @@ pipeline {
                     agent any
                     steps {
                     withSonarQubeEnv(credentialsId: 'sonar_idfs') {
-                       sonar-scanner -Dsonar.projectKey=idfsbank
+                       sh 'sonar-scanner -Dsonar.projectKey=idfsbank'
                     }
                     }
                 }
