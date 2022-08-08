@@ -4,11 +4,8 @@ pipeline {
         stage("QA"){
             parallel {
                 stage("QA-1"){
-                    agent any
-                    steps {
                     withSonarQubeEnv(credentialsId: 'sonar_idfs') {
                        sh 'sonar-scanner -Dsonar.projectKey=idfsbank'
-                    }
                     }
                 }
 
