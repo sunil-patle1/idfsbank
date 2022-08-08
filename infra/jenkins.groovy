@@ -21,8 +21,9 @@ pipeline {
         stage("Sonar-Scan") {
             steps { 
             //withSonarQubeEnv(installationName: 'sonar-idfs', credentialsId: 'sonar_idfs') 
-            //{
-                sh 'export PATH=$PATH:/opt/sonar-scanner/bin'     
+            //{ 
+                sh 'echo $PATH'
+                //sh 'export PATH=$PATH:/opt/sonar-scanner/bin'     
                 sh 'sonar-scanner -Dsonar.login=b2245e51979648e62f91cf0e28cd73ad8d4dedb0 -Dsonar.projectKey=idfsbank -Dsonar.organization=atulyw'
             //}
           }  
