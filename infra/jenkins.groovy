@@ -22,7 +22,7 @@ pipeline {
             steps { 
             withSonarQubeEnv(installationName: 'sonar-idfs', credentialsId: 'sonar_idfs') 
             {
-                sh 'export PATH=$PATH:/opt/sonar-scanner/bin/' 
+                //sh 'export PATH=$PATH:/opt/sonar-scanner/bin/' 
                 sh 'sonar-scanner --version'    
                 sh 'sonar-scanner -Dsonar.projectKey=idfsbank'
             }
