@@ -18,11 +18,13 @@ pipeline {
                 }
             }
         }
-        stage("Sonar-Scan") { 
+        stage("Sonar-Scan") {
+            steps { 
             withSonarQubeEnv(credentialsId: 'sonar_idfs') 
             {
                 sh 'sonar-scanner -Dsonar.projectKey=idfsbank'
             }
+          }  
         }
         stage("Build"){
             steps {
