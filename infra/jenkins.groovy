@@ -23,12 +23,18 @@ pipeline {
                 withCredentials([string(credentialsId: 'sonar_idfs', variable: 'sonar_idfs')]) {
                 sh '''
                 export PATH=$PATH:/usr/sbin/sonar-scanner/bin
-                echo $PATH
                 sonar-scanner -Dsonar.login=$sonar_idfs -Dsonar.projectKey=idfsbank -Dsonar.organization=atulyw
                 '''
              }
           }  
         }
+        stage("Quality Gate") {
+            steps {
+              timeout(time: 1, unit: 'HOURS') {
+                waitForQualityGate abortPipeline: true
+              }
+            }
+          }
         stage("Build"){
             steps {
                 sh '''
