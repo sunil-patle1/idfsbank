@@ -17,9 +17,13 @@ jobs:
         # Disabling shallow clone is recommended for improving relevancy of reporting
         fetch-depth: 0
     - name: SonarCloud Scan
-      uses: mathrix-education/sonar-scanner@master
-      with:
-        version: 4.2.0.1873 # required
-        typescript: true
-        scan: true
-        args: -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+      run: |
+        wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip
+        apt-get update -y
+        apt-get install unzip
+        unzip sonar-scanner-cli-4.7.0.2747-linux.zip
+        mv sonar-scanner-cli-4.7.0.2747-linux /opt/sonar-scanner
+        export PATH=$PATH:/usr/sbin/sonar-scanner/bin
+        sonar-scanner -Dsonar.login=${{ secrets.SONAR_TOKEN }} -Dsonar.projectKey=idfsbank -Dsonar.organization=atulyw
+
+#        args: -Dsonar.login=${{ secrets.SONAR_TOKEN }}
