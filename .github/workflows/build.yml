@@ -17,8 +17,13 @@ jobs:
         # Disabling shallow clone is recommended for improving relevancy of reporting
         fetch-depth: 0
     - name: SonarCloud Scan
-      uses: sonarsource/sonarcloud-github-action@master
-      run: sonar-scanner -Dsonar.login=$sonar_idfs -Dsonar.projectKey=idfsbank -Dsonar.organization=atulyw
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      run: |
+        wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip
+        sudo apt-get update -y
+        sudo apt-get install unzip
+        sudo unzip sonar-scanner-cli-4.7.0.2747-linux.zip
+        sudo mv sonar-scanner-4.7.0.2747-linux /opt/sonar-scanner
+        export PATH=$PATH:/opt/sonar-scanner/bin
+        sonar-scanner -Dsonar.login=${{ secrets.SONAR_TOKEN }} -Dsonar.projectKey=idfsbank -Dsonar.organization=atulyw
+
+#        args: -Dsonar.login=${{ secrets.SONAR_TOKEN }}
