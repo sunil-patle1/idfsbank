@@ -19,20 +19,14 @@ pipeline {
             }
         }
         stage("Sonar-Scan") {
-            steps { 
-            //withSonarQubeEnv(installationName: 'sonar-idfs', credentialsId: 'sonar_idfs') 
-            //{ 
-                // sh 'echo $PATH'
-                // sh 'export PATH=$PATH:/usr/sbin/sonar-scanner/bin'
-                // sh 'echo $PATH'
-                // sh 'sonar-scanner -Dsonar.login=b2245e51979648e62f91cf0e28cd73ad8d4dedb0 -Dsonar.projectKey=idfsbank -Dsonar.organization=atulyw'
+            steps {
+                withCredentials([string(credentialsId: 'sonar_idfs', variable: 'sonar_idfs')]) {
                 sh '''
                 export PATH=$PATH:/usr/sbin/sonar-scanner/bin
                 echo $PATH
-                sonar-scanner -Dsonar.login=b2245e51979648e62f91cf0e28cd73ad8d4dedb0 -Dsonar.projectKey=idfsbank -Dsonar.organization=atulyw
+                sonar-scanner -Dsonar.login=$sonar_idfs -Dsonar.projectKey=idfsbank -Dsonar.organization=atulyw
                 '''
-
-            //}
+             }
           }  
         }
         stage("Build"){
