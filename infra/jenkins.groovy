@@ -20,7 +20,6 @@ pipeline {
         }
         stage("Sonar-Scan") {
             steps {
-                withCredentials([string(credentialsId: 'sonar_idfs', variable: 'sonar_idfs')]) {
                 sh '''
                 export PATH=$PATH:/usr/sbin/sonar-scanner/bin
                 sonar-scanner -Dsonar.login=$sonar_idfs -Dsonar.projectKey=idfsbank -Dsonar.organization=atulyw
