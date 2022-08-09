@@ -25,5 +25,3 @@ jobs:
         sudo mv sonar-scanner-4.7.0.2747-linux /opt/sonar-scanner
         export PATH=$PATH:/opt/sonar-scanner/bin
         sonar-scanner -Dsonar.login=${{ secrets.SONAR_TOKEN }} -Dsonar.projectKey=idfsbank -Dsonar.organization=atulyw
-
-#        args: -Dsonar.login=${{ secrets.SONAR_TOKEN }}
