@@ -22,4 +22,4 @@ jobs:
         version: 4.2.0.1873 # required
         typescript: true
         scan: true
-        args: --debug -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+        args: -Dsonar.login=${{ secrets.SONAR_TOKEN }}
