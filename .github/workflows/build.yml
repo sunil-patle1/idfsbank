@@ -19,10 +19,10 @@ jobs:
     - name: SonarCloud Scan
       run: |
         wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip
-        apt-get update -y
-        apt-get install unzip
-        unzip sonar-scanner-cli-4.7.0.2747-linux.zip
-        mv sonar-scanner-cli-4.7.0.2747-linux /opt/sonar-scanner
+        sudo apt-get update -y
+        sudo apt-get install unzip
+        sudo unzip sonar-scanner-cli-4.7.0.2747-linux.zip
+        sudo mv sonar-scanner-cli-4.7.0.2747-linux /opt/sonar-scanner
         export PATH=$PATH:/usr/sbin/sonar-scanner/bin
         sonar-scanner -Dsonar.login=${{ secrets.SONAR_TOKEN }} -Dsonar.projectKey=idfsbank -Dsonar.organization=atulyw
 
