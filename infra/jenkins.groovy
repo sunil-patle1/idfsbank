@@ -21,8 +21,8 @@ pipeline {
         stage("Sonar-Scan") {
             steps {
                 sh '''
-                export PATH=$PATH:/usr/sbin/sonar-scanner/bin
-                sonar-scanner -Dsonar.login=$sonar_idfs -Dsonar.projectKey=idfsbank -Dsonar.organization=atulyw
+                export PATH=$PATH:/opt/sonar-scanner/bin
+                sonar-scanner -Dsonar.login=b5d12d2402ebf7b27b08b7fc1e9c74326b9fd1b8 -Dsonar.projectKey=idfsbank -Dsonar.organization=atulyw
                 '''
              }
           }  
