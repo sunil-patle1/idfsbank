@@ -106,15 +106,5 @@ pipeline {
                 echo "pushing artifact to s3"
             }
         }
-
-        stage("deploy-prod"){
-            when {
-                branch "main"
-            }
-
-            steps {
-                echo "Deploying artifact to s3"
-            }
-        }
     }
 }
